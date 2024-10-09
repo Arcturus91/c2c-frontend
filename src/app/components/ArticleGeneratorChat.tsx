@@ -11,6 +11,7 @@ import {
 import ChatInterface from "./ChatInterface";
 import { FaSpinner } from "react-icons/fa";
 import { useChatParameters } from "../context/ChatParameterContext";
+import { useRouter } from "next/navigation";
 
 interface ArticleGeneratorChatProps {
   initialMessage?: Message;
@@ -19,6 +20,7 @@ interface ArticleGeneratorChatProps {
 const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
   initialMessage,
 }) => {
+  const router = useRouter();
   const [session, setSession] = useState<ChatSession | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -89,7 +91,6 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
         }
       );
 
-      // Create a FormData object and append the necessary fields
       const formData = new FormData();
       Object.entries(presignedPostData.fields).forEach(([key, value]) => {
         formData.append(key, value as string);
@@ -109,6 +110,7 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
       if (uploadResponse.ok) {
         setSaveSuccess(true);
         console.log("Upload successful");
+        router.push("/content-dashboard");
       } else {
         throw new Error("Upload failed");
       }
