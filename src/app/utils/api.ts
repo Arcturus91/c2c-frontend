@@ -50,3 +50,25 @@ export const updateModel = async (sessionId: string, model: string) => {
   console.log("updateModel", response.data);
   return response.data;
 };
+
+export const getS3PresignedPost = async (
+  fileName: string,
+  fileType: string
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/get-upload-url`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fileName, fileType }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to get presigned POST URL");
+  }
+
+  return response.json();
+};
