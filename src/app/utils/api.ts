@@ -12,9 +12,19 @@ const api = axios.create({
 
 export const createChatSession = async (
   type: "SYS_MSG_SEO_OUTLINER" | "SYS_MSG_SEO_ARTICLE_GENERATOR",
-  model: string
+  model: string,
+  contentType: string,
+  temperature: number,
+  audience: string,
+  funnelStage: string
 ) => {
-  const response = await api.post(`/chat_sessions/${type}`, { model });
+  const response = await api.post(`/chat_sessions/${type}`, {
+    model,
+    contentType,
+    temperature,
+    audience,
+    funnelStage,
+  });
   console.log("createChatSession", response.data, model);
   return response.data;
 };

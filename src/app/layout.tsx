@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ModelProvider } from "./context/ModelContext";
+import { ChatParameterProvider } from "./context/ChatParameterContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ModelProvider>{children}</ModelProvider>
+        <ChatParameterProvider>{children}</ChatParameterProvider>
       </body>
     </html>
   );

@@ -10,7 +10,7 @@ import {
 } from "../utils/api";
 import ChatInterface from "./ChatInterface";
 import { FaSpinner } from "react-icons/fa";
-import { useModel } from "../context/ModelContext";
+import { useChatParameters } from "../context/ChatParameterContext";
 
 interface ArticleGeneratorChatProps {
   initialMessage?: Message;
@@ -24,7 +24,8 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
-  const { currentModel } = useModel();
+  const { currentModel, contentType, temperature, audience, funnelStage } =
+    useChatParameters();
 
   useEffect(() => {
     const initSession = async () => {
@@ -33,7 +34,11 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
         setError(null);
         const newSession = await createChatSession(
           "SYS_MSG_SEO_ARTICLE_GENERATOR",
-          currentModel
+          currentModel,
+          contentType,
+          temperature,
+          audience,
+          funnelStage
         );
         setSession(newSession);
 

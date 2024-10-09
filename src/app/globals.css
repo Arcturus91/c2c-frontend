@@ -199,3 +199,53 @@ select {
   color: var(--danger);
   margin-top: 20px;
 }
+
+.sidebar-section {
+  margin-bottom: 20px;
+}
+
+.sidebar-section label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sidebar-section select,
+.sidebar-section input[type="range"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+}
+
+.sidebar-section input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.sidebar-section input[type="range"]:hover {
+  opacity: 1;
+}
+
+.sidebar-section input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.sidebar-section input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}

@@ -4,7 +4,7 @@ import { ChatSession, Message } from "../types";
 import { createChatSession } from "../utils/api";
 import ChatInterface from "./ChatInterface";
 import { FaSpinner } from "react-icons/fa";
-import { useModel } from "../context/ModelContext";
+import { useChatParameters } from "../context/ChatParameterContext";
 
 interface OutlinerChatProps {
   onAccept: (lastMessage: Message) => void;
@@ -13,14 +13,19 @@ interface OutlinerChatProps {
 const OutlinerChat: React.FC<OutlinerChatProps> = ({ onAccept }) => {
   const [session, setSession] = useState<ChatSession | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { currentModel } = useModel();
+  const { currentModel, contentType, temperature, audience, funnelStage } =
+    useChatParameters();
 
   useEffect(() => {
     const initSession = async () => {
       try {
         const newSession = await createChatSession(
           "SYS_MSG_SEO_OUTLINER",
-          currentModel
+          currentModel,
+          contentType,
+          temperature,
+          audience,
+          funnelStage
         );
         setSession(newSession);
       } catch (error) {

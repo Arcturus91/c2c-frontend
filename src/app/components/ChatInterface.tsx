@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Message, ChatSession } from "../types";
 import { addMessage, getAIResponse } from "../utils/api";
 import { FaSpinner } from "react-icons/fa";
+import { useChatParameters } from "../context/ChatParameterContext";
 
 interface ChatInterfaceProps {
   session: ChatSession;
@@ -10,6 +11,7 @@ interface ChatInterfaceProps {
 }
 
 const ChatInterface: React.FC<ChatInterfaceProps> = ({ session, onAccept }) => {
+  const { setIsSidebarLocked } = useChatParameters();
   const [messages, setMessages] = useState<Message[]>(session.messages);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +34,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ session, onAccept }) => {
       setInput("");
 
       setIsLoading(true);
+      setIsSidebarLocked(true);
       const aiResponse = await getAIResponse(session.id);
       setMessages((prevMessages) => [...prevMessages, aiResponse]);
       setIsLoading(false);

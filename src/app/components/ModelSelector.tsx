@@ -1,6 +1,6 @@
 import React from "react";
 import { updateModel } from "../utils/api";
-import { useModel } from "../context/ModelContext";
+import { useChatParameters } from "../context/ChatParameterContext";
 
 const MODELS = [
   "anthropic/claude-3-5-sonnet-20240620",
@@ -13,12 +13,14 @@ interface ModelSelectorProps {
 }
 
 const ModelSelector: React.FC<ModelSelectorProps> = ({ sessionId }) => {
-  const { currentModel, setCurrentModel } = useModel();
+  const { currentModel, setCurrentModel, setIsSidebarLocked } =
+    useChatParameters();
 
   const handleModelChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newModel = e.target.value;
     await updateModel(sessionId, newModel);
     setCurrentModel(newModel);
+    setIsSidebarLocked(false);
   };
 
   return (
