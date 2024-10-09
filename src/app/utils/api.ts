@@ -15,7 +15,7 @@ export const createChatSession = async (
   model: string
 ) => {
   const response = await api.post(`/chat_sessions/${type}`, { model });
-  console.log("createChatSession", response.data);
+  console.log("createChatSession", response.data, model);
   return response.data;
 };
 
@@ -44,9 +44,9 @@ export const getAIResponse = async (sessionId: string) => {
 };
 
 export const updateModel = async (sessionId: string, model: string) => {
-  const response = await api.put(`/chat_sessions/${sessionId}/model`, {
-    model,
-  });
+  const type = "SYS_MSG_SEO_OUTLINER";
+  const response = await api.post(`/chat_sessions/${type}`, { model });
+
   console.log("updateModel", response.data);
   return response.data;
 };

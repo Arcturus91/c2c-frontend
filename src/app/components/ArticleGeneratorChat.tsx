@@ -10,6 +10,7 @@ import {
 } from "../utils/api";
 import ChatInterface from "./ChatInterface";
 import { FaSpinner } from "react-icons/fa";
+import { useModel } from "../context/ModelContext";
 
 interface ArticleGeneratorChatProps {
   initialMessage?: Message;
@@ -23,6 +24,7 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const { currentModel } = useModel();
 
   useEffect(() => {
     const initSession = async () => {
@@ -31,7 +33,7 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
         setError(null);
         const newSession = await createChatSession(
           "SYS_MSG_SEO_ARTICLE_GENERATOR",
-          "anthropic/claude-3-5-sonnet-20240620"
+          currentModel
         );
         setSession(newSession);
 
@@ -52,7 +54,7 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
       }
     };
     initSession();
-  }, [initialMessage]);
+  }, [initialMessage, currentModel]);
 
   const handleAcceptContent = async () => {
     if (!session || session.messages.length === 0) {

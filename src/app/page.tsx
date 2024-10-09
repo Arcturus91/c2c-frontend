@@ -4,12 +4,11 @@ import ArticleGeneratorChat from "./components/ArticleGeneratorChat";
 import OutlinerChat from "./components/OutlinerChat";
 import ModelSelector from "./components/ModelSelector";
 import { Message } from "./types";
+import { useModel } from "./context/ModelContext";
 
 const Home: React.FC = () => {
   const [acceptedOutline, setAcceptedOutline] = useState<Message | null>(null);
-  const [currentModel, setCurrentModel] = useState<string>(
-    "anthropic/claude-3-5-sonnet-20240620"
-  );
+  const { currentModel } = useModel();
 
   const handleAcceptOutline = (lastMessageFromAssistant: Message) => {
     const acceptedMessage = {
@@ -26,7 +25,6 @@ const Home: React.FC = () => {
         <h2>SEO Content Generator</h2>
         <ModelSelector
           sessionId="your-session-id" // You'll need to provide a real session ID
-          currentModel={currentModel}
         />
         {/* Add any other sidebar content here */}
       </div>
