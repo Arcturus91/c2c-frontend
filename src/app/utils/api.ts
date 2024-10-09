@@ -63,7 +63,8 @@ export const updateModel = async (sessionId: string, model: string) => {
 
 export const getS3PresignedPost = async (
   fileName: string,
-  fileType: string
+  fileType: string,
+  metadata?: Record<string, string>
 ) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/get-upload-url`,
@@ -72,7 +73,7 @@ export const getS3PresignedPost = async (
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fileName, fileType }),
+      body: JSON.stringify({ fileName, fileType, metadata }),
     }
   );
 

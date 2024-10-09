@@ -27,7 +27,7 @@ const Sidebar: React.FC = () => {
       <div className="sidebar-section">
         <label htmlFor="content-type">Content Type:</label>
         <select
-          id="content-type"
+          id="model-select"
           value={contentType}
           onChange={(e) => setContentType(e.target.value)}
           disabled={isSidebarLocked}
@@ -58,7 +58,7 @@ const Sidebar: React.FC = () => {
       <div className="sidebar-section">
         <label htmlFor="audience">Audience:</label>
         <select
-          id="audience"
+          id="model-select"
           value={audience}
           onChange={(e) => setAudience(e.target.value)}
           disabled={isSidebarLocked}
@@ -74,7 +74,7 @@ const Sidebar: React.FC = () => {
       <div className="sidebar-section">
         <label htmlFor="funnel-stage">Funnel Stage:</label>
         <select
-          id="funnel-stage"
+          id="model-select"
           value={funnelStage}
           onChange={(e) => setFunnelStage(e.target.value)}
           disabled={isSidebarLocked}

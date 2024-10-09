@@ -79,7 +79,14 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
       // Get the presigned POST data
       const presignedPostData = await getS3PresignedPost(
         fileName,
-        "text/plain"
+        "text/plain",
+        {
+          currentModel: currentModel.toString(),
+          contentType,
+          temperature: temperature.toString(),
+          audience,
+          funnelStage,
+        }
       );
 
       // Create a FormData object and append the necessary fields

@@ -9,11 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        primary: "rgb(var(--primary) / <alpha-value>)",
+        secondary: "rgb(var(--secondary) / <alpha-value>)",
+        success: "rgb(var(--success) / <alpha-value>)",
+        danger: "rgb(var(--danger) / <alpha-value>)",
+        "sidebar-bg": "rgb(var(--sidebar-bg) / <alpha-value>)",
+        "chat-user-bg": "rgb(var(--chat-user-bg) / <alpha-value>)",
+        "chat-ai-bg": "rgb(var(--chat-ai-bg) / <alpha-value>)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
