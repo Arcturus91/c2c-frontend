@@ -110,7 +110,9 @@ const ArticleGeneratorChat: React.FC<ArticleGeneratorChatProps> = ({
       if (uploadResponse.ok) {
         setSaveSuccess(true);
         console.log("Upload successful");
-        router.push("/content-dashboard");
+        setTimeout(() => {
+          router.push("/content-dashboard");
+        }, 3000);
       } else {
         throw new Error("Upload failed");
       }
