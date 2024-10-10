@@ -41,7 +41,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       <div className="sidebar-section">
-        <label htmlFor="temperature">Temperature:</label>
+        <label htmlFor="temperature">Creativity:</label>
         <input
           disabled={isSidebarLocked}
           type="range"
