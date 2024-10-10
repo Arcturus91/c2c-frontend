@@ -80,33 +80,17 @@ const DashboardTable: React.FC = () => {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full bg-white rounded-lg overflow-hidden">
+      <table className="dashboard-table">
         <thead className="bg-gray-100">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Article ID
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Object URL
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Content Type
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Audience
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Created At
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Funnel Stage
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Model
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Temperature
-            </th>
+            <th>Article ID</th>
+            <th>Object URL</th>
+            <th>Content Type</th>
+            <th>Audience</th>
+            <th>Created At</th>
+            <th>Funnel Stage</th>
+            <th>Model</th>
+            <th>Temperature</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
@@ -115,10 +99,8 @@ const DashboardTable: React.FC = () => {
               key={item.articleId}
               className="hover:bg-gray-50 transition-colors duration-150"
             >
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                {item.articleId}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
+              <td>{item.articleId}</td>
+              <td>
                 <a
                   href={item.objectUrl}
                   target="_blank"
@@ -128,25 +110,13 @@ const DashboardTable: React.FC = () => {
                   View
                 </a>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {item.contentType}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {item.audience}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {new Date(item.createdAt).toLocaleString()}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {item.funnelStage}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {item.model}
-              </td>
+              <td>{item.contentType}</td>
+              <td>{item.audience}</td>
+              <td>{new Date(item.createdAt).toLocaleString()}</td>
+              <td>{item.funnelStage}</td>
+              <td>{item.model}</td>
 
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {item.temperature}
-              </td>
+              <td>{item.temperature}</td>
             </tr>
           ))}
         </tbody>

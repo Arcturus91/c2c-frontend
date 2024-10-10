@@ -11,7 +11,7 @@ const ddbClient = new DynamoDBClient({
 
 const docClient = DynamoDBDocumentClient.from(ddbClient);
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const scanCommand = new ScanCommand({
       TableName: process.env.DYNAMODB_TABLE_NAME as string,
